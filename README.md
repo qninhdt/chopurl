@@ -57,7 +57,7 @@ ChopURL là một dự án nhỏ được tạo ra để thực hành các kiế
 
 ## Kiến trúc hệ thống
 
-![Kiến trúc hệ thống](./docs/architecture.png)
+![Kiến trúc hệ thống](./docs/architecture.jpg)
 
 ## Công nghệ sử dụng
 - Frontend: NextJS, TailwindCSS
