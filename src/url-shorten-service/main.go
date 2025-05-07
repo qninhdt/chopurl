@@ -109,9 +109,17 @@ func main() {
 	middleware := func(h fasthttp.RequestHandler) fasthttp.RequestHandler {
 		return func(ctx *fasthttp.RequestCtx) {
 			// Add CORS headers
-			ctx.Response.Header.Set("Access-Control-Allow-Origin", "*")
-			ctx.Response.Header.Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
-			ctx.Response.Header.Set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization")
+			// ctx.Response.Header.Set("Access-Control-Allow-Origin", "*")
+			// ctx.Response.Header.Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, PATCH")
+			// ctx.Response.Header.Set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, X-CSRF-Token")
+			// ctx.Response.Header.Set("Access-Control-Allow-Credentials", "true")
+			// ctx.Response.Header.Set("Access-Control-Max-Age", "86400") // 24 hours
+
+			// Handle preflight requests
+			if string(ctx.Method()) == "OPTIONS" {
+				ctx.SetStatusCode(fasthttp.StatusNoContent)
+				return
+			}
 
 			// Call the original handler
 			h(ctx)

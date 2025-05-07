@@ -71,9 +71,9 @@ func main() {
 	middleware := func(h fasthttp.RequestHandler) fasthttp.RequestHandler {
 		return func(ctx *fasthttp.RequestCtx) {
 			// Add CORS headers
-			ctx.Response.Header.Set("Access-Control-Allow-Origin", "*")
-			ctx.Response.Header.Set("Access-Control-Allow-Methods", "GET, OPTIONS")
-			ctx.Response.Header.Set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization")
+			// ctx.Response.Header.Set("Access-Control-Allow-Origin", "*")
+			// ctx.Response.Header.Set("Access-Control-Allow-Methods", "GET, OPTIONS")
+			// ctx.Response.Header.Set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization")
 
 			// Call the original handler
 			h(ctx)
