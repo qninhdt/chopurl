@@ -55,6 +55,10 @@ ChopURL là một dự án nhỏ được tạo ra để thực hành các kiế
 - Sử dụng **Nginx** làm middleware để phân phối request đến các service theo thuật toán Round Robin.
 - Sử dụng middleware cho CORS và rate limit.
 
+## Kiến trúc hệ thống
+
+![Kiến trúc hệ thống](./docs/architecture.png)
+
 ## Công nghệ sử dụng
 - Frontend: NextJS, TailwindCSS
 - Backend: Go, FastHTTP
