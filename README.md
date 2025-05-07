@@ -6,6 +6,9 @@
 
 ChopURL là một dự án nhỏ được tạo ra để thực hành các kiến trúc của môn Kiến trúc phần mềm.
 
+- Frontend: [https://cs-1.vercel.app](https://cs-1.vercel.app)
+- Backend: [https://original-cs1-2.onrender.com](https://original-cs1-2.onrender.com)
+
 ## Thành viên
 - Nguyễn Quang Ninh - 22021166
 - Lê Thế Phương Minh - 22028089
