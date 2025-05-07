@@ -41,6 +41,7 @@ ChopURL là một dự án nhỏ được tạo ra để thực hành các kiế
 ### Chiến lược caching   
 - Hệ thống sử dụng Redis cho việc caching.
 - Ngoài ra, hệ thống sử dụng **2 replication** cho Redis để tăng tốc độ truy xuất dữ liệu và tính sẵn sàng.
+- Sử dụng **Redis Sentinel** để quản lý cluster Redis.
 
 ### Tách biệt 2 API tạo và chuyển đổi URL
 - Do lượng request để đọc url rút gọn lớn hơn rất nhiều so với việc tạo url rút gọn, nên hệ thống tách biệt 2 API này ra thành 2 service khác nhau.
@@ -50,11 +51,15 @@ ChopURL là một dự án nhỏ được tạo ra để thực hành các kiế
 ### Cơ sở dữ liệu
 - Do hệ thống yêu cầu tính **High Availability**, **Scalability** và không đòi hỏi tính **Consistency** cao, nên nhóm sử dụng **Cassandra** làm cơ sở dữ liệu với 3 node.
 
+### Middleware
+- Sử dụng **Nginx** làm middleware để phân phối request đến các service theo thuật toán Round Robin.
+- Sử dụng middleware cho CORS và rate limit.
+
 ## Công nghệ sử dụng
 - Frontend: NextJS, TailwindCSS
 - Backend: Go, FastHTTP
 - Database: Redis, Cassandra
-- Caching: Redis
+- Caching: Redis, Redis Sentinel
 - Distributed: ETCD
 - Benchmark: wrk
 
