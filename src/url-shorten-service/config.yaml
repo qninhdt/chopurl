@@ -1,0 +1,22 @@
+id_alloc:
+  segment_size: 1000000
+  queue_threshold: 0.5
+  segment_count_key: "segment_count"
+  segment_map_key: "segment_map"
+  max_segment_count: 1000000
+
+etcd:
+  connect_timeout: 5s
+  request_timeout: 5s
+
+redis:
+  connect_timeout: 5s
+  set_timeout: 5s
+
+cassandra:
+  timeout: 5s
+  connect_timeout: 10s
+
+server:
+  disable_rate_limit: false
+  max_rps: 10

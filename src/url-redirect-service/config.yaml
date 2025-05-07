@@ -1,0 +1,15 @@
+redis:
+  sentinel_address: "localhost:26379"
+  master_name: "mymaster"
+  password: ""
+  connect_timeout: 5s
+  set_timeout: 5s
+
+cassandra:
+  hosts:
+    - "cassandra-1"
+    - "cassandra-2"
+    - "cassandra-3"
+  keyspace: "chopurl_keyspace"
+  timeout: 5s
+  connect_timeout: 10s
