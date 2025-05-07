@@ -6,6 +6,11 @@
 
 ChopURL là một dự án nhỏ được tạo ra để thực hành các kiến trúc của môn Kiến trúc phần mềm.
 
+## Thành viên
+- Nguyễn Quang Ninh - 22021166
+- Lê Thế Phương Minh - 22028089
+- Nguyễn Viết Hoàng - 22028122
+
 ## Yêu cầu chức năng (Functional Requirements)
 
 - Tạo URL ngắn
@@ -22,14 +27,14 @@ ChopURL là một dự án nhỏ được tạo ra để thực hành các kiế
 
 ### Thiết kế của URL rút gọn
 - Hệ thống sử dụng 7 ký tự base62 (a-z, A-Z, 0-9) để sinh ra url rút gọn
-- Dự liệu đươc lưu dưới dạng int64 và chuyển đổi sang base62 để trả về cho người dùng
+- Dữ liệu đươc lưu dưới dạng int64 và chuyển đổi sang base62 để trả về cho người dùng
   
-### Thuật toán sinh URL rút gọn phấn tán
-- Để tránh việc toàn bộ các node phải **đồng bộ** với nhau mỗi khi 1 node sinh id (hay url rút gọn) mới. Hệ thống chia 62^7 id có thể tạo ra thành **1,000,000 segment** với mỗi segmenet có 62^7/1,000,000 ≈ 3,000,000 id.
+### Thuật toán sinh URL rút gọn phân tán
+- Để tránh việc toàn bộ các node phải **đồng bộ** với nhau mỗi khi 1 node sinh id (hay url rút gọn) mới. Hệ thống chia 62^7 id có thể tạo ra thành **1,000,000 segment** với mỗi segment có 62^7/1,000,000 ≈ 3,000,000 id.
 - Mỗi node sẽ được phân phát cho 1 segment và sẽ sinh id (hay url rút gọn) trong phạm vi segment của nó.
 - Khi gần hết id trong segment, node sẽ gửi thông báo đến hệ thống **ETCD** để thông báo về việc cần phân phối lại id cho node khác.
 - Hệ thống phân tán ETCD sử dụng thuật toán **Fisher-Yates** để sinh 1 segment mới chưa được sử dụng cho phía backend.
-- Để đảm bảo tính bảo mật, cả ECTD và phía backend đều cấp phát id **ngẫu nhiên** và không thể dự đoán được.
+- Để đảm bảo tính bảo mật, cả ETCD và phía backend đều cấp phát id **ngẫu nhiên** và không thể dự đoán được.
 
 > Nhờ vậy, hệ thống có thể tạo URL rút gọn mà không cần kiểm tra sự trùng lặp của id tại bất cứ node nào.
 
