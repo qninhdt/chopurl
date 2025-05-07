@@ -36,7 +36,7 @@ ChopURL là một dự án nhỏ được tạo ra để thực hành các kiế
 - Để tránh việc toàn bộ các node phải **đồng bộ** với nhau mỗi khi 1 node sinh id (hay url rút gọn) mới. Hệ thống chia 62^7 id có thể tạo ra thành **1,000,000 segment** với mỗi segment có 62^7/1,000,000 ≈ 3,000,000 id.
 - Mỗi node sẽ được phân phát cho 1 segment và sẽ sinh id (hay url rút gọn) trong phạm vi segment của nó.
 - Khi gần hết id trong segment, node sẽ gửi thông báo đến hệ thống **ETCD** để thông báo về việc cần phân phối lại id cho node khác.
-- Hệ thống phân tán ETCD sử dụng thuật toán **Fisher-Yates** để sinh 1 segment mới chưa được sử dụng cho phía backend.
+- Kết hợp hệ thống phân tán ETCD và thuật toán **Fisher-Yates** để sinh 1 segment mới chưa được sử dụng cho phía backend.
 - Để đảm bảo tính bảo mật, cả ETCD và phía backend đều cấp phát id **ngẫu nhiên** và không thể dự đoán được.
 
 > Nhờ vậy, hệ thống có thể tạo URL rút gọn mà không cần kiểm tra sự trùng lặp của id tại bất cứ node nào.
